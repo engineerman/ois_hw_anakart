@@ -38,23 +38,6 @@ PrefsVaultGUID=
 PrefsRevisionGUID=
 
 [Document1]
-DocumentPath=ois.SchDoc
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=HOPWGCWD
-
-[Document2]
 DocumentPath=OIS_Anakart.PcbDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -69,7 +52,24 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=KHVJBLOJ
+
+[Document2]
+DocumentPath=OIS_Anakart.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=HOPWGCWD
 
 [Configuration1]
 Name=Sources
@@ -1071,6 +1071,12 @@ SelectedOnly=0
 UpdateVariants=1
 UpdateToLatestRevision=1
 PartTypes=0
+
+[ToDoManager]
+ProjectToDo1=Name=RPi yeni library component|UID=VEMDLXVQ
+ProjectToDo2=Name=Anakart sac montaj delikleri M3|Category=DONE|UID=SKABIVJC
+ProjectToDo3=Name=Kart kenarlarini RPi a göre sifirla|UID=RWMUOOXY
+ProjectToDo4=Name=COnn esit aralikta~1|Category=DONE|UID=BTGRVTKG
 
 [Comparison Options]
 ComparisonOptions0=Kind=Net|MinPercent=75|MinMatch=3|ShowMatch=-1|Confirm=-1|UseName=-1|InclAllRules=0
