@@ -1,0 +1,479 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD20\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">25.03.2024</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">08:34:12</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:02</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc" class="file"><acronym title="C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc">C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">54</td></tr>
+</table>
+</td>
+</table><a name="ID0UBCWEZD1RWDIJKBYC23NDLLVOKN4USQF0ZZIMNR43K2WXHW2HH"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDO1LLCHV5VOSFIAI03D3L2IX1EO0O02DQQGAEBLDURT2DAWGS5SVB">Clearance Constraint (Gap=0.127mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID4SOA1IQROILRC5AUKOYEM3FUNBCRGWRRGGKNS4M1TVFYEPPET1X">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDIZGTUOTWRID5Y0RXW4CBUFNK2GTWQHOLFN24AHJDCGOR53SXI">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDF53MZXDUYNKBG1JTCCLATWHTEMDRPCROV3H2IPDEFEY2Y5EXH01C">Width Constraint (Min=0.127mm) (Max=1mm) (Preferred=0.127mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDRSHNZCJOYNZBIFED0XPGGTJDKP3OXMRBXGAQCTBDZZULDARMSGZG">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDK04CEGENC1PAI5UULFUZWQPQDFXJRHOM3ZFWLFFIR3HT5R2G5DSL">Hole Size Constraint (Min=0.025mm) (Max=3.5mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDKB3VCSDSIOJTJ5JMS04SKMDAWND0CYHNUEP3CYDDCWGSFI35THNM">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDKSU5CEIUZDB5ILC2NDCBIRYPGMOGYAHP3ZH3QKP3LHSCLOISRW2P">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDW50XZ1GIAJSDD2P5U0P0TGR2SHRPGKBIYH42ZYMKCZVR335UAI3J">Board Clearance Constraint (Gap=0mm) (All)</a></td>
+<td class="column2">54</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDLCDVSFJL4ONCNP2BR3FNYFA5PHDG4045DZ2QS0F1RD3GA13I32DM">Height Constraint (Min=0mm) (Max=50mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">54</td>
+</tr>
+</table><br><a name="IDW50XZ1GIAJSDD2P5U0P0TGR2SHRPGKBIYH42ZYMKCZVR335UAI3J"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Board Clearance Constraint (Gap=0mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6161.405mil|Location2.X=6169.072mil|Location1.Y=144.705mil|Location2.Y=152.372mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6161.405mil|Location2.X=6169.072mil|Location1.Y=144.705mil|Location2.Y=152.372mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Arc (-134.83mm,-12.725mm) on Bottom Overlay And Board Edge </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4074.624mil|Location2.X=4082.291mil|Location1.Y=144.705mil|Location2.Y=152.372mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4074.624mil|Location2.X=4082.291mil|Location1.Y=144.705mil|Location2.Y=152.372mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Arc (-184.83mm,-12.725mm) on Bottom Overlay And Board Edge </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9127.656mil|Location2.X=9135.322mil|Location1.Y=620.397mil|Location2.Y=628.064mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9127.656mil|Location2.X=9135.322mil|Location1.Y=620.397mil|Location2.Y=628.064mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Text "+" (-59.965mm,9.007mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3351.443mil|Location2.X=3359.11mil|Location1.Y=4786.782mil|Location2.Y=4794.448mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3351.443mil|Location2.X=3359.11mil|Location1.Y=4786.782mil|Location2.Y=4794.448mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Text "12V" (-203.201mm,97.005mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1875.432mil|Location2.X=1883.098mil|Location1.Y=4794.589mil|Location2.Y=4802.256mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1875.432mil|Location2.X=1883.098mil|Location1.Y=4794.589mil|Location2.Y=4802.256mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Text "Analog In" (-241.126mm,91.264mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10256.829mil|Location2.X=10264.496mil|Location1.Y=4945.679mil|Location2.Y=4953.346mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10256.829mil|Location2.X=10264.496mil|Location1.Y=4945.679mil|Location2.Y=4953.346mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Text "AUX" (-28.238mm,98.939mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7819.345mil|Location2.X=7827.011mil|Location1.Y=4831.242mil|Location2.Y=4838.908mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7819.345mil|Location2.X=7827.011mil|Location1.Y=4831.242mil|Location2.Y=4838.908mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Text "Digital Out" (-88.904mm,90.955mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11539.746mil|Location2.X=11547.413mil|Location1.Y=1791.564mil|Location2.Y=1799.231mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11539.746mil|Location2.X=11547.413mil|Location1.Y=1791.564mil|Location2.Y=1799.231mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Text "OIS MB v1.0" (-6.354mm,44.982mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9527.725mil|Location2.X=9535.392mil|Location1.Y=704.827mil|Location2.Y=712.494mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9527.725mil|Location2.X=9535.392mil|Location1.Y=704.827mil|Location2.Y=712.494mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Text "PWR IN
++12V" (-49.803mm,6.64mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7373.565mil|Location2.X=7381.232mil|Location1.Y=4829.241mil|Location2.Y=4836.908mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7373.565mil|Location2.X=7381.232mil|Location1.Y=4829.241mil|Location2.Y=4836.908mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-102.539mm,97.012mm)(-102.539mm,106.212mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10970.606mil|Location2.X=10978.273mil|Location1.Y=4839.161mil|Location2.Y=4846.828mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10970.606mil|Location2.X=10978.273mil|Location1.Y=4839.161mil|Location2.Y=4846.828mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-11.175mm,97.516mm)(-11.175mm,106.716mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10969.326mil|Location2.X=10976.993mil|Location1.Y=614.428mil|Location2.Y=622.095mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10969.326mil|Location2.X=10976.993mil|Location1.Y=614.428mil|Location2.Y=622.095mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-11.207mm,-4.484mm)(-11.207mm,4.716mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7050.141mil|Location2.X=7057.808mil|Location1.Y=4886.399mil|Location2.Y=4894.065mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7050.141mil|Location2.X=7057.808mil|Location1.Y=4886.399mil|Location2.Y=4894.065mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-118.969mm,106.212mm)(-102.539mm,106.212mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6726.717mil|Location2.X=6734.384mil|Location1.Y=4829.241mil|Location2.Y=4836.908mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6726.717mil|Location2.X=6734.384mil|Location1.Y=4829.241mil|Location2.Y=4836.908mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-118.969mm,97.012mm)(-118.969mm,106.212mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6383.566mil|Location2.X=6391.233mil|Location1.Y=4769.172mil|Location2.Y=4776.839mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6383.566mil|Location2.X=6391.233mil|Location1.Y=4769.172mil|Location2.Y=4776.839mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-127.685mm,102.41mm)(-127.685mm,103.2mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6220.377mil|Location2.X=6228.043mil|Location1.Y=452.983mil|Location2.Y=460.649mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6220.377mil|Location2.X=6228.043mil|Location1.Y=452.983mil|Location2.Y=460.649mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-131.83mm,-12.725mm)(-131.83mm,66.275mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5118.015mil|Location2.X=5125.681mil|Location1.Y=85.734mil|Location2.Y=93.4mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5118.015mil|Location2.X=5125.681mil|Location1.Y=85.734mil|Location2.Y=93.4mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-184.83mm,-15.725mm)(-134.83mm,-15.725mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4054.432mil|Location2.X=4062.099mil|Location1.Y=4769.172mil|Location2.Y=4776.839mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4054.432mil|Location2.X=4062.099mil|Location1.Y=4769.172mil|Location2.Y=4776.839mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-186.845mm,102.41mm)(-186.845mm,103.2mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5218.999mil|Location2.X=5226.666mil|Location1.Y=4769.172mil|Location2.Y=4776.839mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5218.999mil|Location2.X=5226.666mil|Location1.Y=4769.172mil|Location2.Y=4776.839mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-186.845mm,103.2mm)(-127.685mm,103.2mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4015.652mil|Location2.X=4023.319mil|Location1.Y=452.983mil|Location2.Y=460.649mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4015.652mil|Location2.X=4023.319mil|Location1.Y=452.983mil|Location2.Y=460.649mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-187.83mm,-12.725mm)(-187.83mm,66.275mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3792.605mil|Location2.X=3800.272mil|Location1.Y=4829.11mil|Location2.Y=4836.776mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3792.605mil|Location2.X=3800.272mil|Location1.Y=4829.11mil|Location2.Y=4836.776mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-193.496mm,97.005mm)(-193.496mm,106.205mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3619.18mil|Location2.X=3626.847mil|Location1.Y=4886.136mil|Location2.Y=4893.802mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3619.18mil|Location2.X=3626.847mil|Location1.Y=4886.136mil|Location2.Y=4893.802mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-202.306mm,106.205mm)(-193.496mm,106.205mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3445.755mil|Location2.X=3453.421mil|Location1.Y=4829.11mil|Location2.Y=4836.776mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3445.755mil|Location2.X=3453.421mil|Location1.Y=4829.11mil|Location2.Y=4836.776mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-202.306mm,97.005mm)(-202.306mm,106.205mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3198.31mil|Location2.X=3205.977mil|Location1.Y=4829.11mil|Location2.Y=4836.776mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3198.31mil|Location2.X=3205.977mil|Location1.Y=4829.11mil|Location2.Y=4836.776mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-208.591mm,97.005mm)(-208.591mm,106.205mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2574.886mil|Location2.X=2582.552mil|Location1.Y=4886.136mil|Location2.Y=4893.802mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2574.886mil|Location2.X=2582.552mil|Location1.Y=4886.136mil|Location2.Y=4893.802mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-240.261mm,106.205mm)(-208.591mm,106.205mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1951.462mil|Location2.X=1959.129mil|Location1.Y=4829.11mil|Location2.Y=4836.776mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1951.462mil|Location2.X=1959.129mil|Location1.Y=4829.11mil|Location2.Y=4836.776mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-240.261mm,97.005mm)(-240.261mm,106.205mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1735.808mil|Location2.X=1743.474mil|Location1.Y=4779.453mil|Location2.Y=4787.119mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1735.808mil|Location2.X=1743.474mil|Location1.Y=4779.453mil|Location2.Y=4787.119mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-245.739mm,102.787mm)(-245.739mm,103.722mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1460.217mil|Location2.X=1467.884mil|Location1.Y=4779.453mil|Location2.Y=4787.119mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1460.217mil|Location2.X=1467.884mil|Location1.Y=4779.453mil|Location2.Y=4787.119mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-252.739mm,102.787mm)(-252.739mm,103.722mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10647.182mil|Location2.X=10654.849mil|Location1.Y=4906.24mil|Location2.Y=4913.906mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10647.182mil|Location2.X=10654.849mil|Location1.Y=4906.24mil|Location2.Y=4913.906mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-27.605mm,106.716mm)(-11.175mm,106.716mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10323.758mil|Location2.X=10331.425mil|Location1.Y=4839.161mil|Location2.Y=4846.828mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10323.758mil|Location2.X=10331.425mil|Location1.Y=4839.161mil|Location2.Y=4846.828mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-27.605mm,97.516mm)(-27.605mm,106.716mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10645.903mil|Location2.X=10653.569mil|Location1.Y=528.291mil|Location2.Y=535.958mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10645.903mil|Location2.X=10653.569mil|Location1.Y=528.291mil|Location2.Y=535.958mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-27.637mm,-4.484mm)(-11.207mm,-4.484mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10322.478mil|Location2.X=10330.145mil|Location1.Y=614.428mil|Location2.Y=622.095mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10322.478mil|Location2.X=10330.145mil|Location1.Y=614.428mil|Location2.Y=622.095mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-27.637mm,-4.484mm)(-27.637mm,4.716mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10073.313mil|Location2.X=10080.979mil|Location1.Y=4769.095mil|Location2.Y=4776.762mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10073.313mil|Location2.X=10080.979mil|Location1.Y=4769.095mil|Location2.Y=4776.762mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-33.966mm,99.134mm)(-33.966mm,103.184mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9996.541mil|Location2.X=10004.208mil|Location1.Y=4883.268mil|Location2.Y=4890.935mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9996.541mil|Location2.X=10004.208mil|Location1.Y=4883.268mil|Location2.Y=4890.935mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-35.916mm,103.184mm)(-35.916mm,108.984mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9858.746mil|Location2.X=9866.413mil|Location1.Y=4883.268mil|Location2.Y=4890.935mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9858.746mil|Location2.X=9866.413mil|Location1.Y=4883.268mil|Location2.Y=4890.935mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-39.416mm,103.184mm)(-39.416mm,108.984mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9927.644mil|Location2.X=9935.31mil|Location1.Y=4995.519mil|Location2.Y=5003.185mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9927.644mil|Location2.X=9935.31mil|Location1.Y=4995.519mil|Location2.Y=5003.185mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-39.416mm,108.984mm)(-35.916mm,108.984mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9927.644mil|Location2.X=9935.31mil|Location1.Y=4769.095mil|Location2.Y=4776.762mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9927.644mil|Location2.X=9935.31mil|Location1.Y=4769.095mil|Location2.Y=4776.762mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-41.366mm,103.184mm)(-33.966mm,103.184mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9781.974mil|Location2.X=9789.641mil|Location1.Y=4769.095mil|Location2.Y=4776.762mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9781.974mil|Location2.X=9789.641mil|Location1.Y=4769.095mil|Location2.Y=4776.762mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-41.366mm,99.134mm)(-41.366mm,103.184mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9420.154mil|Location2.X=9427.82mil|Location1.Y=667.994mil|Location2.Y=675.66mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9420.154mil|Location2.X=9427.82mil|Location1.Y=667.994mil|Location2.Y=675.66mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-50.556mm,-1.451mm)(-50.556mm,-0.421mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9408.349mil|Location2.X=9416.015mil|Location1.Y=683.137mil|Location2.Y=690.803mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9408.349mil|Location2.X=9416.015mil|Location1.Y=683.137mil|Location2.Y=690.803mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-51.156mm,-0.681mm)(-50.556mm,-0.421mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9396.544mil|Location2.X=9404.211mil|Location1.Y=689.285mil|Location2.Y=696.952mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9396.544mil|Location2.X=9404.211mil|Location1.Y=689.285mil|Location2.Y=696.952mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-51.156mm,-0.681mm)(-51.156mm,6.309mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9408.336mil|Location2.X=9416.003mil|Location1.Y=652.822mil|Location2.Y=660.488mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9408.336mil|Location2.X=9416.003mil|Location1.Y=652.822mil|Location2.Y=660.488mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-51.156mm,-1.191mm)(-50.556mm,-1.451mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9396.531mil|Location2.X=9404.198mil|Location1.Y=646.144mil|Location2.Y=653.81mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9396.531mil|Location2.X=9404.198mil|Location1.Y=646.144mil|Location2.Y=653.81mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-51.156mm,-1.191mm)(-51.156mm,-1.791mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9337.165mil|Location2.X=9344.831mil|Location1.Y=4795.279mil|Location2.Y=4802.946mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9337.165mil|Location2.X=9344.831mil|Location1.Y=4795.279mil|Location2.Y=4802.946mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-52.664mm,103.312mm)(-52.664mm,104.483mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9309.606mil|Location2.X=9317.272mil|Location1.Y=4772.225mil|Location2.Y=4779.892mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9309.606mil|Location2.X=9317.272mil|Location1.Y=4772.225mil|Location2.Y=4779.892mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-54.064mm,103.312mm)(-52.664mm,103.312mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9309.606mil|Location2.X=9317.272mil|Location1.Y=4852.366mil|Location2.Y=4860.032mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9309.606mil|Location2.X=9317.272mil|Location1.Y=4852.366mil|Location2.Y=4860.032mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-54.064mm,106.212mm)(-52.664mm,104.483mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9282.047mil|Location2.X=9289.713mil|Location1.Y=4829.241mil|Location2.Y=4836.907mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9282.047mil|Location2.X=9289.713mil|Location1.Y=4829.241mil|Location2.Y=4836.907mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-54.064mm,93.912mm)(-54.064mm,106.212mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9196.531mil|Location2.X=9204.198mil|Location1.Y=634.332mil|Location2.Y=641.999mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9196.531mil|Location2.X=9204.198mil|Location1.Y=634.332mil|Location2.Y=641.999mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-61.316mm,-1.791mm)(-51.156mm,-1.791mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8996.501mil|Location2.X=9004.167mil|Location1.Y=668.055mil|Location2.Y=675.722mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8996.501mil|Location2.X=9004.167mil|Location1.Y=668.055mil|Location2.Y=675.722mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-61.317mm,-1.76mm)(-61.317mm,3.651mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8635.787mil|Location2.X=8643.453mil|Location1.Y=4886.398mil|Location2.Y=4894.065mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8635.787mil|Location2.X=8643.453mil|Location1.Y=4886.398mil|Location2.Y=4894.065mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-86.894mm,106.212mm)(-54.064mm,106.212mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7989.527mil|Location2.X=7997.194mil|Location1.Y=4829.241mil|Location2.Y=4836.907mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7989.527mil|Location2.X=7997.194mil|Location1.Y=4829.241mil|Location2.Y=4836.907mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-86.894mm,93.912mm)(-86.894mm,106.212mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7961.968mil|Location2.X=7969.635mil|Location1.Y=4772.225mil|Location2.Y=4779.892mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7961.968mil|Location2.X=7969.635mil|Location1.Y=4772.225mil|Location2.Y=4779.892mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-88.294mm,103.312mm)(-86.894mm,103.312mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7934.409mil|Location2.X=7942.075mil|Location1.Y=4795.279mil|Location2.Y=4802.946mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7934.409mil|Location2.X=7942.075mil|Location1.Y=4795.279mil|Location2.Y=4802.946mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-88.294mm,103.312mm)(-88.294mm,104.483mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7961.968mil|Location2.X=7969.635mil|Location1.Y=4852.366mil|Location2.Y=4860.032mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\P\ois_hw_anakart\OIS_Anakart.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7961.968mil|Location2.X=7969.635mil|Location1.Y=4852.366mil|Location2.Y=4860.032mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.254mm) Between Board Edge And Track (-88.294mm,104.483mm)(-86.894mm,106.212mm) on Top Overlay </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
