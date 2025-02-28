@@ -356,58 +356,46 @@ DocumentPath=./FAB_OIS_MB_v1_0\NC Drill\OIS_Anakart.DRR
 DItemRevisionGUID=
 
 [GeneratedDocument4]
-DocumentPath=./FAB_OIS_MB_v1_0\Gerber\OIS_Anakart.EXTREP
-DItemRevisionGUID=
-
-[GeneratedDocument5]
 DocumentPath=./FAB_OIS_MB_v1_0\Gerber\OIS_Anakart.G1
 DItemRevisionGUID=
 
-[GeneratedDocument6]
+[GeneratedDocument5]
 DocumentPath=./FAB_OIS_MB_v1_0\Gerber\OIS_Anakart.G2
 DItemRevisionGUID=
 
-[GeneratedDocument7]
+[GeneratedDocument6]
 DocumentPath=./FAB_OIS_MB_v1_0\Gerber\OIS_Anakart.GBL
 DItemRevisionGUID=
 
-[GeneratedDocument8]
+[GeneratedDocument7]
 DocumentPath=./FAB_OIS_MB_v1_0\Gerber\OIS_Anakart.GBO
 DItemRevisionGUID=
 
-[GeneratedDocument9]
+[GeneratedDocument8]
 DocumentPath=./FAB_OIS_MB_v1_0\Gerber\OIS_Anakart.GBS
 DItemRevisionGUID=
 
-[GeneratedDocument10]
+[GeneratedDocument9]
 DocumentPath=./FAB_OIS_MB_v1_0\Gerber\OIS_Anakart.GM10
 DItemRevisionGUID=
 
-[GeneratedDocument11]
+[GeneratedDocument10]
 DocumentPath=./FAB_OIS_MB_v1_0\Gerber\OIS_Anakart.GTL
 DItemRevisionGUID=
 
-[GeneratedDocument12]
+[GeneratedDocument11]
 DocumentPath=./FAB_OIS_MB_v1_0\Gerber\OIS_Anakart.GTO
 DItemRevisionGUID=
 
-[GeneratedDocument13]
+[GeneratedDocument12]
 DocumentPath=./FAB_OIS_MB_v1_0\Gerber\OIS_Anakart.GTS
 DItemRevisionGUID=
 
-[GeneratedDocument14]
+[GeneratedDocument13]
 DocumentPath=./FAB_OIS_MB_v1_0\NC Drill\OIS_Anakart.LDP
 DItemRevisionGUID=
 
-[GeneratedDocument15]
-DocumentPath=./FAB_OIS_MB_v1_0\Gerber\OIS_Anakart.REP
-DItemRevisionGUID=
-
-[GeneratedDocument16]
-DocumentPath=./FAB_OIS_MB_v1_0\Gerber\OIS_Anakart.RUL
-DItemRevisionGUID=
-
-[GeneratedDocument17]
+[GeneratedDocument14]
 DocumentPath=./FAB_OIS_MB_v1_0\NC Drill\OIS_Anakart.TXT
 DItemRevisionGUID=
 
@@ -1605,6 +1593,12 @@ ProjectToDo13=Name=SMA conn THT|State=1|UID=IQCRYXCI
 ProjectToDo14=Name=Optolar giris GND degil. dry contact|State=1|UID=VKQJNYSE
 ProjectToDo15=Name=RElay jumperlari büyüt|State=1|UID=CGWADVEM
 ProjectToDo16=Name=ESP32 CAM UArt pinleri connector demi|State=1|Category=DONE|UID=SBBFKBRC
+ProjectToDo17=Name=rotate i2c jumpers for bettor routing|UID=DRGXPYKT
+ProjectToDo18=Name=Pull up i2c pins|Category=DONE|UID=AIBVUYIB
+ProjectToDo19=Name=extra resistor in ds2482 pull up|UID=VCYTVOYW
+ProjectToDo20=Name=Change GSM module|Category=DONE|UID=JMCNMJOG
+ProjectToDo21=Name=Add UFL for USB GSM connection to Panel|UID=DQKBBSIY
+ProjectToDo22=Name=Add typec + decoy|Category=DONE|UID=KBGRJHMF
 
 [Comparison Options]
 ComparisonOptions0=Kind=Net|MinPercent=75|MinMatch=3|ShowMatch=-1|Confirm=-1|UseName=-1|InclAllRules=0
